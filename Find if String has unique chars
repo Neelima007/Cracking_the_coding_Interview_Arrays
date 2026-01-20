@@ -1,0 +1,25 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+       boolean result = isUnique("ABCDE");
+        System.out.println("Is unique?  " + result);
+    }
+    
+     public  static boolean isUnique(String a){
+        char[] arr = a.toCharArray();
+        Arrays.sort(arr);
+       String sorted = new String(arr);
+       
+       for(int i = 1; i < arr.length; i++){
+           if(sorted.charAt(i) == sorted.charAt(i-1)){
+               System.out.println(sorted);
+               return false;
+           }
+       }
+       return true; 
+    }
+}

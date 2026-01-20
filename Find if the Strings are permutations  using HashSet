@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+import java.util.Arrays;
+class Main {
+    public static void main(String[] args) {
+       boolean result = isPermutation("listen","silent");
+        System.out.println("Is permutation?  " + result);
+    }
+    
+     public  static boolean isPermutation(String a, String b){
+         
+         if(a.length()!= b.length()){return false;}
+         
+        char[] arr = a.toCharArray();
+        char[] arr1 = b.toCharArray();
+        
+        HashSet map = new HashSet();
+         for(int i = 0; i < a.length(); i++){
+           map.add(arr[i]);
+           }
+           
+           for(int j = 0; j < b.length(); j++){
+               if(!map.contains(arr1[j])){return false;}
+               
+           }
+           
+            return true; 
+           
+       }
+      
+    }

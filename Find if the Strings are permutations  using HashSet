@@ -18,13 +18,16 @@ class Main {
        String str2 = "ABCABC";
        String str1_upper = str1.toUpperCase();
        String str2_upper = str2.toUpperCase();
-       boolean result = isPermutation(str1_upper, str2_upper);
+       boolean result = isPermutation(str1, str2);
         System.out.println("Is permutation?  " + result);
     }
     
-     public  static boolean isPermutation(String a, String b){
+     public  static boolean isPermutation(String str1, String str2){
          
-         if(a.length()!= b.length()){return false;}
+         if(str1.length()!= str2.length()){return false;}
+         
+       String a = str1.toUpperCase();
+       String b = str2.toUpperCase();
          
         char[] arr = a.toCharArray();
         char[] arr1 = b.toCharArray();

@@ -1,3 +1,11 @@
+//"ABCABC","ABCABC"
+//"aaabbb", "AAABBB"
+//"listenn","silentt"
+//"",""
+//"abcdd","abcde"
+//"123","123"
+//"123","1234"
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -5,7 +13,12 @@ import java.io.*;
 import java.util.Arrays;
 class Main {
     public static void main(String[] args) {
-       boolean result = isPermutation("listen","silent");
+      // boolean result = isPermutation("aaabbb", "AAABBB");
+       String str1 = "ABCABC";
+       String str2 = "ABCABC";
+       String str1_upper = str1.toUpperCase();
+       String str2_upper = str2.toUpperCase();
+       boolean result = isPermutation(str1_upper, str2_upper);
         System.out.println("Is permutation?  " + result);
     }
     
@@ -16,15 +29,35 @@ class Main {
         char[] arr = a.toCharArray();
         char[] arr1 = b.toCharArray();
         
-        HashSet map = new HashSet();
+        HashMap<Character,Integer> map1 = new HashMap<>();
          for(int i = 0; i < a.length(); i++){
-           map.add(arr[i]);
+             if(map1.containsKey(arr[i])){
+                 int value = map1.get(arr[i]);
+                 map1.put(arr[i],value+1);
+             }else{
+                 map1.put(arr[i],1);
+             }
+          
            }
            
-           for(int j = 0; j < b.length(); j++){
-               if(!map.contains(arr1[j])){return false;}
-               
+         HashMap<Character,Integer> map2 = new HashMap<>();
+         for(int i = 0; i < b.length(); i++){
+             if(map2.containsKey(arr1[i])){
+                 int value = map2.get(arr1[i]);
+                 map2.put(arr1[i],value+1);
+             }else{
+                 map2.put(arr1[i],1);
+             }
+          
            }
+           
+           for(int i = 0; i < a.length(); i++){
+               if(map1.get(arr[i])!= map2.get(arr[i])){
+                   return false;
+               }
+           }
+           
+          
            
             return true; 
            

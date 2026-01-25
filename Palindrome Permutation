@@ -1,0 +1,53 @@
+// "Taco Cao"
+// "mAlayalam"
+//"123321"
+//"112234"
+//"Taco CCao"
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		boolean result = isPalindrome("123321");
+		System.out.println("result :  " +   result);
+	}
+	
+	public static boolean isPalindrome (String str1){
+	    
+	    String str1_uppercase = str1.toUpperCase().replaceAll("\\s+","");
+	  
+	   
+	   HashMap<Character,Integer> map = new HashMap<>();
+	   char[] arr = str1_uppercase.toCharArray();
+	   
+	   for(int i = 0; i < arr.length; i++){
+	       
+	       if(map.containsKey(arr[i])){
+	           int val = map.get(arr[i]);
+	           map.put(arr[i], val + 1);
+	       }else{
+	           map.put(arr[i],1);
+	       }
+	       
+	   }
+	   int threshold = 0;
+	   
+	   for (int i= 0; i < arr.length; i++){
+	       
+	      int count = map.get(arr[i]);
+	      System.out.println("count of  "+ arr[i] + " : "+ count);
+	      if(count % 2 == 1){
+	          threshold++ ;
+	      }  
+	   }
+	   
+	   if(threshold > 1){return false;}
+	   
+	   return true;
+	} 	
+}
